@@ -1,10 +1,14 @@
 from tkinter import *
 
 master = Tk()
-master.minsize(width=300, height=300)
+master.minsize(width=380, height=320)
 master.maxsize(width=301, height=301)
 master.title("Quiz Game")
-master.iconbitmap("qg (1).ico")
+try:
+    master.iconbitmap("qg.ico")  # Use .ico file for this
+except Exception as e:
+    print(f"Error setting icon: {e}")
+
 global score 
 score=0
 answered = False
@@ -38,7 +42,7 @@ def qp1():
     lb1.place(x=10,y=5)
   
     q_frame = Frame(master)  # Set desired width and height
-    q1 = Label(q_frame, text="What does CPU stand for?", fg="olive",bg="white",width=40,height=3)
+    q1 = Label(q_frame, text="What does CPU stand for?", fg="olive",bg="white",width=35,height=3)
     q1.pack(pady=10)
 
     q11 = Button(q_frame, text="Central Processing Unit", bg="white", command=lambda: func(q11),width=40)
@@ -64,7 +68,7 @@ def qp2():
     lb1 = Label(master, text="Question no. 2", fg="red")
     lb1.place(x=10,y=5)
     q_frame = Frame(master)
-    q2 = Label(q_frame, text="What does GPU stand for?", fg="olive",bg="white",width=40,height=3)
+    q2 = Label(q_frame, text="What does GPU stand for?", fg="olive",bg="white",width=35,height=3)
     q2.pack(pady=10)
     
     q21 = Button(q_frame, text="Graphics Processing Unit", bg="white", command=lambda: func(q21),width=40)
@@ -89,7 +93,7 @@ def qp3():
     lb1.place(x=10,y=5)
     q_frame = Frame(master)
 
-    q3 = Label(q_frame, text="What does RAM stand for?",fg="olive",bg="white",width=40,height=3)
+    q3 = Label(q_frame, text="What does RAM stand for?",fg="olive",bg="white",width=35,height=3)
     q3.pack(pady=10)
 
     q32 = Button(q_frame, text="Read Access Memory", bg="white", command=lambda: funct(q32, q33),width=40)
@@ -115,7 +119,7 @@ def qp4():
     lb1.place(x=10,y=5)
     q_frame = Frame(master)
 
-    q4 = Label(q_frame, text="What does PSU stand for?", fg="olive",bg="white",width=40,height=3)
+    q4 = Label(q_frame, text="What does PSU stand for?", fg="olive",bg="white",width=35,height=3)
     q4.pack(pady=10)
 
     q42 = Button(q_frame, text="Peripheral Supply Unit", bg="white", command=lambda: funct(q42, q43),width=40)
@@ -147,19 +151,19 @@ def quiz_game():
     lb.place(x=10,y=10)
     varr=StringVar()
     name=Entry(master,textvariable=varr,fg="red")
-    name.place(x=120,y=50)
+    name.place(x=140,y=50)
     mailid=StringVar()
     name=Entry(master,textvariable=mailid,fg="red")
-    name.place(x=120,y=80)
+    name.place(x=140,y=80)
     def submit():
         global x
         global y
         x = varr.get().capitalize()
         y=mailid.get().lower()
         lb1.config(text=x,bg="white",width=20,fg="Coral")
-        lb1.place(x=120,y=50)
+        lb1.place(x=140,y=50)
         lb2.config(text=y,bg="white",width=20,fg="Coral")
-        lb2.place(x=120,y=80)
+        lb2.place(x=140,y=80)
         enter_name.config(text="Name:") 
         enter_name .place(x=70,y=50)
         enter_mail.config(text="Mail ID:")
@@ -180,7 +184,7 @@ def final():
     empty.place(x=0,y=1)
     score_label = Label(master, text=f"  Quiz is over !!👍👍👍\n{x} Your Score is : {score}/ 4  \n ", font=("Ariel", 10, "bold"),fg="Turquoise")
     score_label.place(x=40,y=50)
-    score_label = Label(master, text="if you want to restar click the bellow button", font=("Ariel", 10, "bold"),fg="teal")
+    score_label = Label(master, text="if you want to restart click the bellow button", font=("Ariel", 10, "bold"),fg="teal")
     score_label.place(x=10,y=130)
     score=0
     quiz=Button(master,text="Restart Quiz...♻️",bg="white",command=quiz_game,height=1,fg="#FFCC00")
